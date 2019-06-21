@@ -4,8 +4,8 @@ import { getSmurfs } from "../actions";
 import "./App.scss";
 import { Route, NavLink, withRouter } from "react-router-dom";
 import SmurfForm from "./SmurfForm";
-import Smurfs from "./Smurfs";
-import SmurfCard from "./SmurfCard";
+import Smurfs from "../views/Smurfs";
+import SmurfLink from "../views/SmurfLink";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -47,11 +47,7 @@ class App extends Component {
 					// 		/>
 					// 	</div>
 					// )}
-					render={props => (
-						<div className="Smurf">
-							<SmurfCard smurfs={this.props.smurfs} {...props} />
-						</div>
-					)}
+					render={props => <SmurfLink smurfs={this.props.smurfs} {...props} />}
 				/>
 			</div>
 		);

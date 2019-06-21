@@ -7,8 +7,7 @@ export class RenderSmurf extends Component {
 		this.state = {
 			cardName: this.props.name,
 			cardAge: this.props.age,
-			cardHeight: this.props.height,
-			updating: false
+			cardHeight: this.props.height
 		};
 	}
 
@@ -16,20 +15,23 @@ export class RenderSmurf extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	formSubmit = e => {
+	formSubmit = () => {
 		const updatedSmurf = {
 			name: this.state.cardName,
-			age: this.state.cardAge,
+			age: parseInt(this.state.cardAge),
 			height: this.state.cardHeight
 		};
-		this.props.updateSmurf(e, this.props.id, updatedSmurf);
+		this.props.updateSmurf(
+			`http://localhost:3333/smurfs/${this.props.id}`,
+			updatedSmurf
+		);
 		this.props.updateState();
 	};
 
 	render() {
-		if (this.state.updating === false) {
+		if (this.props.updating === false) {
 			return (
-				<div className="smurfCard">
+				<div>
 					<div className="cardElement">{this.props.name}</div>
 					<div className="cardElement">{this.props.age}</div>
 					<div className="cardElement">{this.props.height}</div>

@@ -51,10 +51,10 @@ export const addSmurf = (URL, newSmurf) => dispatch => {
 		.catch(err => dispatch({ type: CREATE_FAILURE, payload: err.data }));
 };
 
-export const deleteSmurf = (URL, id) => dispatch => {
+export const deleteSmurf = URL => dispatch => {
 	dispatch({ type: DELETE_START });
 	axios
-		.delete(URL, id)
+		.delete(URL)
 		.then(res => {
 			console.log(res);
 			dispatch({ type: DELETE_SUCCESS, payload: res.data });
@@ -62,10 +62,10 @@ export const deleteSmurf = (URL, id) => dispatch => {
 		.catch(err => dispatch({ type: DELETE_FAILURE, payload: err.data }));
 };
 
-export const updateSmurf = (URL, id) => dispatch => {
+export const updateSmurf = (URL, updatedSmurf) => dispatch => {
 	dispatch({ type: UPDATE_START });
 	axios
-		.put(URL, id)
+		.put(URL, updatedSmurf)
 		.then(res => {
 			console.log(res);
 			dispatch({ type: UPDATE_SUCCESS, payload: res.data });

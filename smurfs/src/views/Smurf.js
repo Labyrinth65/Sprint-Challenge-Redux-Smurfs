@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SmurfCard from "./SmurfCard";
+import SmurfCard from "../components/SmurfCard";
 
 class Smurf extends React.Component {
 	render() {
