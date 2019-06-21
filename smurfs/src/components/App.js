@@ -32,16 +32,21 @@ class App extends Component {
 				<Route
 					exact
 					path="/"
-					render={props => (
-						<Smurfs
-							// {...props}
-							smurfs={this.props.smurfs}
-						/>
-					)}
+					render={() => <Smurfs smurfs={this.props.smurfs} />}
 				/>
 				<Route
 					exact
 					path="/smurf/:id"
+					// render={props => (
+					// 	<div className="Smurf">
+					// 		<SmurfCard
+					// 			{...props}
+					// 			linkedSmurf={this.props.smurfs.find(smurf => {
+					// 				return smurf.id === this.props.match.params.id;
+					// 			})}
+					// 		/>
+					// 	</div>
+					// )}
 					render={props => (
 						<div className="Smurf">
 							<SmurfCard smurfs={this.props.smurfs} {...props} />

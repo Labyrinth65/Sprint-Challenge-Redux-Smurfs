@@ -1,6 +1,5 @@
 /* Home Page */
 .App {
-	/* text-align: center; */
 }
 .navBar {
 	display: flex;
@@ -39,9 +38,8 @@
 	background: lightskyblue;
 	color: darkblue;
 	padding: 0.5% 1% 1% 1%;
-	margin: 1%;
+	margin: 1% auto;
 	width: 25%;
-
 	.viewDiv {
 		display: flex;
 		font-size: 1.5rem;

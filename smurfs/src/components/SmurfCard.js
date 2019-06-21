@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSmurfs } from "../actions";
+import { updateSmurf, deleteSmurf } from "../actions";
 import RenderSmurf from "./RenderSmurf";
 
 class SmurfCard extends Component {
 	render() {
+		console.log(this.props.match);
+		console.log(this.props);
 		return (
 			<div className="smurfCard">
 				<div className="cardTop">
@@ -13,7 +15,16 @@ class SmurfCard extends Component {
 							<i className="far fa-edit" />
 						</div>
 						<div
-							onClick={e => this.props.deleteSmurf(e, this.props.id)}
+							onClick={e => {
+								const URL = "http://localhost:3333/smurfs/";
+								e.preventDefault();
+								this.props.match === undefined
+									? this.props.deleteSmurf(`${URL}+${this.props.id}`)
+									: this.props.deleteSmurf(
+											`${URL}+${this.props.match.params.id}`
+									  );
+								// this.props.history.push("/");
+							}}
 							className="deleteButton"
 						>
 							<i className="far fa-trash-alt" />
@@ -48,5 +59,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ getSmurfs }
+	{ updateSmurf, deleteSmurf }
 )(SmurfCard);

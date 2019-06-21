@@ -7,13 +7,13 @@ import {
 	FETCHING_FAILURE,
 	CREATE_START,
 	CREATE_SUCCESS,
-	CREATE_FAILURE
-	// DELETE_START,
-	// DELETE_SUCCESS,
-	// DELETE_FAILURE,
-	// UPDATE_START,
-	// UPDATE_SUCCESS,
-	// UPDATE_FAILURE
+	CREATE_FAILURE,
+	DELETE_START,
+	DELETE_SUCCESS,
+	DELETE_FAILURE,
+	UPDATE_START,
+	UPDATE_SUCCESS,
+	UPDATE_FAILURE
 } from "../actions";
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -32,8 +32,7 @@ const initialState = {
 	addingSmurf: false,
 	updatingSmurf: false,
 	deletingSmurf: false,
-	error: null,
-	updateToggle: false
+	error: null
 };
 
 /*
@@ -80,6 +79,40 @@ export const smurfReducer = (state = initialState, action) => {
 			return {
 				...state,
 				addingSmurfs: false,
+				error: action.payload
+			};
+		case DELETE_START:
+			return {
+				...state,
+				deletingSmurfs: true
+			};
+		case DELETE_SUCCESS:
+			return {
+				...state,
+				deletingSmurfs: false,
+				smurfs: action.payload
+			};
+		case DELETE_FAILURE:
+			return {
+				...state,
+				deletingSmurfs: false,
+				error: action.payload
+			};
+		case UPDATE_START:
+			return {
+				...state,
+				updatingSmurfs: true
+			};
+		case UPDATE_SUCCESS:
+			return {
+				...state,
+				updatingSmurfs: false,
+				smurfs: action.payload
+			};
+		case UPDATE_FAILURE:
+			return {
+				...state,
+				updatingSmurfs: false,
 				error: action.payload
 			};
 		default:

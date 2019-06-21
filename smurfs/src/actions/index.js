@@ -16,6 +16,7 @@ export const DELETE_FAILURE = "DELETE_FAILURE";
 export const UPDATE_START = "UPDATE_START";
 export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
 export const UPDATE_FAILURE = "UPDATE_FAILURE";
+export const TOGGLE_UPDATE = "TOGGLE_UPDATE";
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -48,4 +49,26 @@ export const addSmurf = (URL, newSmurf) => dispatch => {
 			dispatch({ type: CREATE_SUCCESS, payload: res.data });
 		})
 		.catch(err => dispatch({ type: CREATE_FAILURE, payload: err.data }));
+};
+
+export const deleteSmurf = (URL, id) => dispatch => {
+	dispatch({ type: DELETE_START });
+	axios
+		.delete(URL, id)
+		.then(res => {
+			console.log(res);
+			dispatch({ type: DELETE_SUCCESS, payload: res.data });
+		})
+		.catch(err => dispatch({ type: DELETE_FAILURE, payload: err.data }));
+};
+
+export const updateSmurf = (URL, id) => dispatch => {
+	dispatch({ type: UPDATE_START });
+	axios
+		.put(URL, id)
+		.then(res => {
+			console.log(res);
+			dispatch({ type: UPDATE_SUCCESS, payload: res.data });
+		})
+		.catch(err => dispatch({ type: UPDATE_FAILURE, payload: err.data }));
 };
