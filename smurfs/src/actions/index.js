@@ -36,7 +36,7 @@ export const getSmurfs = URL => dispatch => {
 			console.log(res);
 			dispatch({ type: FETCHING_SUCCESS, payload: res.data });
 		})
-		.catch(err => dispatch({ type: FETCHING_FAILURE, payload: err }));
+		.catch(err => dispatch({ type: FETCHING_FAILURE, payload: err.data }));
 };
 
 export const addSmurf = (URL, newSmurf) => dispatch => {
@@ -47,5 +47,5 @@ export const addSmurf = (URL, newSmurf) => dispatch => {
 			console.log(res);
 			dispatch({ type: CREATE_SUCCESS, payload: res.data });
 		})
-		.catch(err => dispatch({ type: CREATE_FAILURE, payload: err }));
+		.catch(err => dispatch({ type: CREATE_FAILURE, payload: err.data }));
 };

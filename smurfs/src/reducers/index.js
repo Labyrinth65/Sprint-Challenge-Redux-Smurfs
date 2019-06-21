@@ -32,7 +32,8 @@ const initialState = {
 	addingSmurf: false,
 	updatingSmurf: false,
 	deletingSmurf: false,
-	error: null
+	error: null,
+	updateToggle: false
 };
 
 /*

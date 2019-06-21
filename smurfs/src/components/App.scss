@@ -41,11 +41,21 @@
 	padding: 0.5% 1% 1% 1%;
 	margin: 1%;
 	width: 25%;
+
+	.viewDiv {
+		display: flex;
+		font-size: 1.5rem;
+		justify-content: center;
+	}
+}
+
+/* Smurf Individual Card */
+.smurfCard {
 	.cardTop {
 		display: flex;
 		font-size: 1.5rem;
 		padding: 1%;
-		justify-content: space-between;
+		justify-content: flex-end;
 	}
 	.buttonDiv {
 		display: flex;
@@ -60,12 +70,6 @@
 	font-size: 1.5rem;
 	text-align: center;
 	padding: 1%;
-}
-
-/* Smurf Individual Card */
-.smurfCard {
-	display: flex;
-	justify-content: center;
 }
 
 /* Smurf Form */

@@ -26,9 +26,9 @@ export class RenderSmurf extends Component {
 	};
 
 	render() {
-		if (this.props.updating === false) {
+		if (true) {
 			return (
-				<div>
+				<div className="smurfCard">
 					<div className="cardElement">{this.props.name}</div>
 					<div className="cardElement">{this.props.age}</div>
 					<div className="cardElement">{this.props.height}</div>

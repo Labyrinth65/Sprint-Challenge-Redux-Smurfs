@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getSmurfs } from "../actions";
 import "./App.scss";
 import { Route, NavLink, withRouter } from "react-router-dom";
 import SmurfForm from "./SmurfForm";
@@ -11,6 +13,10 @@ import SmurfCard from "./SmurfCard";
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+	componentDidMount() {
+		this.props.getSmurfs("http://localhost:3333/smurfs");
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -22,40 +28,42 @@ class App extends Component {
 						Add Smurf
 					</NavLink>
 				</div>
-				<Route
-					path="/smurf-form"
-					component={SmurfForm}
-					// render={props => <SmurfForm {...props} addSmurf={this.addSmurf} />}
-				/>
+				<Route path="/smurf-form" component={SmurfForm} />
 				<Route
 					exact
 					path="/"
-					component={Smurfs}
-					// render={props => (
-					// 	<Smurfs
-					// 		{...props}
-					// 		smurfs={this.state.smurfs}
-					// 		deleteSmurf={this.deleteSmurf}
-					// 		updateSmurf={this.updateSmurf}
-					// 	/>
-					// )}
+					render={props => (
+						<Smurfs
+							// {...props}
+							smurfs={this.props.smurfs}
+						/>
+					)}
 				/>
 				<Route
 					exact
 					path="/smurf/:id"
-					component={SmurfCard}
-					// render={props => (
-					// 	<SmurfCard
-					// 		{...props}
-					// 		smurfs={this.state.smurfs}
-					// 		deleteSmurf={this.deleteSmurf}
-					// 		updateSmurf={this.updateSmurf}
-					// 	/>
-					// )}
+					render={props => (
+						<div className="Smurf">
+							<SmurfCard smurfs={this.props.smurfs} {...props} />
+						</div>
+					)}
 				/>
 			</div>
 		);
 	}
 }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+	return {
+		smurfs: state.smurfs,
+		fetchingSmurfs: state.fetchingSmurfs,
+		error: state.error
+	};
+};
+
+export default withRouter(
+	connect(
+		mapStateToProps,
+		{ getSmurfs }
+	)(App)
+);
