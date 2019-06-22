@@ -50,13 +50,15 @@ export const smurfReducer = (state = initialState, action) => {
 		case FETCHING_START:
 			return {
 				...state,
-				fetchingSmurfs: true
+				fetchingSmurfs: true,
+				error: null
 			};
 		case FETCHING_SUCCESS:
 			return {
 				...state,
 				fetchingSmurfs: false,
-				smurfs: action.payload
+				smurfs: action.payload,
+				error: null
 			};
 		case FETCHING_FAILURE:
 			return {
@@ -67,13 +69,15 @@ export const smurfReducer = (state = initialState, action) => {
 		case CREATE_START:
 			return {
 				...state,
-				addingSmurfs: true
+				addingSmurfs: true,
+				error: null
 			};
 		case CREATE_SUCCESS:
 			return {
 				...state,
 				addingSmurfs: false,
-				smurfs: action.payload
+				smurfs: action.payload,
+				error: null
 			};
 		case CREATE_FAILURE:
 			return {
@@ -84,13 +88,15 @@ export const smurfReducer = (state = initialState, action) => {
 		case DELETE_START:
 			return {
 				...state,
-				deletingSmurfs: true
+				deletingSmurfs: true,
+				error: null
 			};
 		case DELETE_SUCCESS:
 			return {
 				...state,
 				deletingSmurfs: false,
-				smurfs: action.payload
+				smurfs: action.payload,
+				error: null
 			};
 		case DELETE_FAILURE:
 			return {
@@ -101,13 +107,15 @@ export const smurfReducer = (state = initialState, action) => {
 		case UPDATE_START:
 			return {
 				...state,
-				updatingSmurfs: true
+				updatingSmurfs: true,
+				error: null
 			};
 		case UPDATE_SUCCESS:
 			return {
 				...state,
 				updatingSmurfs: false,
-				smurfs: action.payload
+				smurfs: action.payload,
+				error: null
 			};
 		case UPDATE_FAILURE:
 			return {

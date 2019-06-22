@@ -37,7 +37,7 @@ export const getSmurfs = URL => dispatch => {
 			console.log(res);
 			dispatch({ type: FETCHING_SUCCESS, payload: res.data });
 		})
-		.catch(err => dispatch({ type: FETCHING_FAILURE, payload: err.data }));
+		.catch(err => dispatch({ type: FETCHING_FAILURE, payload: err.message }));
 };
 
 export const addSmurf = (URL, newSmurf) => dispatch => {
@@ -48,7 +48,10 @@ export const addSmurf = (URL, newSmurf) => dispatch => {
 			console.log(res);
 			dispatch({ type: CREATE_SUCCESS, payload: res.data });
 		})
-		.catch(err => dispatch({ type: CREATE_FAILURE, payload: err.data }));
+		.catch(err => {
+			console.dir(err);
+			dispatch({ type: CREATE_FAILURE, payload: err.response.data.Error });
+		});
 };
 
 export const deleteSmurf = URL => dispatch => {
@@ -59,7 +62,7 @@ export const deleteSmurf = URL => dispatch => {
 			console.log(res);
 			dispatch({ type: DELETE_SUCCESS, payload: res.data });
 		})
-		.catch(err => dispatch({ type: DELETE_FAILURE, payload: err.data }));
+		.catch(err => dispatch({ type: DELETE_FAILURE, payload: err.message }));
 };
 
 export const updateSmurf = (URL, updatedSmurf) => dispatch => {
@@ -70,5 +73,5 @@ export const updateSmurf = (URL, updatedSmurf) => dispatch => {
 			console.log(res);
 			dispatch({ type: UPDATE_SUCCESS, payload: res.data });
 		})
-		.catch(err => dispatch({ type: UPDATE_FAILURE, payload: err.data }));
+		.catch(err => dispatch({ type: UPDATE_FAILURE, payload: err.message }));
 };

@@ -38,7 +38,7 @@ class SmurfCard extends Component {
 							onClick={e => {
 								const URL = "http://localhost:3333/smurfs/";
 								e.preventDefault();
-								this.props.deleteSmurf(`${URL}+${this.props.id}`);
+								this.props.deleteSmurf(`${URL}${this.props.id}`);
 								return this.props.match === undefined
 									? null
 									: this.props.history.push("/");

@@ -15,7 +15,9 @@ export class RenderSmurf extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	formSubmit = () => {
+	formSubmit = e => {
+		console.log(e);
+		e.preventDefault();
 		const updatedSmurf = {
 			name: this.state.cardName,
 			age: parseInt(this.state.cardAge),
@@ -25,7 +27,7 @@ export class RenderSmurf extends Component {
 			`http://localhost:3333/smurfs/${this.props.id}`,
 			updatedSmurf
 		);
-		this.props.updateState();
+		this.props.updateState(e);
 	};
 
 	render() {
@@ -39,7 +41,7 @@ export class RenderSmurf extends Component {
 			);
 		} else
 			return (
-				<form onSubmit={this.formSubmit} className="updateForm">
+				<form onSubmit={e => this.formSubmit(e)} className="updateForm">
 					<div>
 						<input
 							onChange={this.handleUpdate}
